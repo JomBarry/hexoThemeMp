@@ -7,6 +7,20 @@ site:
   icon: /medias/favicon.ico # 网站图标
 
 
+user: 
+  pic: /medias/user.jpg # 用户图标
+  name: "Barry" # default：username
+  emil: "13396298960@163.com"
+
+phoneSlide:
+  menuWidth: 300     # 滑块的宽度 default：240
+  position: left     # 滑动出现位置
+  closeOnClick: true # 点击内部条目自动关闭滑块
+  draggable: true    # 是否可以在屏幕边缘滑动出现
+  userBackground: /medias/userbackground.jpg
+
+
+
 ##---------------------------------------------------------------------------------------
 # header
 ##---------------------------------------------------------------------------------------
@@ -59,12 +73,19 @@ indexBanner:
       title: "BarryBlog"
       content: "wellcome !!!"
       image: "/medias/images/banner/background2.jpg"
-    
+
+##---------------------------------------------------------------------------------------
+# about
+##---------------------------------------------------------------------------------------
+about: 
+  background: 
+
 
 ##---------------------------------------------------------------------------------------
 # 标题（一）
 ##---------------------------------------------------------------------------------------
 indexTitle1:
+  enable: true
   icon: "thumbs-up"
   text: "推荐文章"
   color: "000"
@@ -82,6 +103,7 @@ indexTitle1:
 ## 按照 Categories 分类
 ## 输入文章类别相关设置 自动判断并设值样式
 indexTitle2:
+  showPostsNumber: 6 # 默认主页面显示文章数
   Android:
     icon: "android"
     text: "Android"
@@ -123,7 +145,22 @@ posts:
     - "/medias/images/postBanner/background3.jpg"
     - "/medias/images/postBanner/background4.jpg"
 
+tocbot:
+  tocSelector: '.js-toc'
+  contentSelector: "#post-content"
+  scrollSmooth: true
+  headingSelector: h1, h2, h3, h4, h5
+  headingsOffset: 45
+  scrollSmoothOffset: -45
 
+categoriesColor: # 按分类给定颜色tag也会有同样的颜色(注意大小写)
+  Android: grad_purple_red
+  Java: grad_Cambridge_blue
+  Hexo: grad_blue_darkBlue
+
+tagsColor: # 设置了tag优先使用（注意大小写）
+  Android: grad_red_purple
+  Hexo: grad_purple_blue
 ##---------------------------------------------------------------------------------------
 # 友情链接
 ##---------------------------------------------------------------------------------------
@@ -158,17 +195,30 @@ libs:
   fontAwesome: 
     css: /libs/fontAwesome/css/font-awesome.min.css
   tocbot: 
-    js: /libs/tocbot/tocbot.min.css
+    js: /libs/tocbot/tocbot.min.js
     css: /libs/tocbot/tocbot.css
   lightgallery: 
-    js: /libs/lightgallery/js/lightgallery.min.js
+    js: 
+      lightgallery: /libs/lightgallery/js/lightgallery.min.js
+      thumbnail: /libs/lightgallery/js/lg-thumbnail.min.js
+      fullscreen: /libs/lightgallery/js/lg-fullscreen.min.js
     css: /libs/lightgallery/css/lightgallery.css
+  floatingMenu: 
+    css: 
+      bootstrap: /libs/floatingMenu/css/bootstrap.min.css
+      zzsc: /libs/floatingMenu/css/zzsc.css
+
 
 
 
 ##----------------------------------------------------------------------------------------
 ## 配置文件
 ##----------------------------------------------------------------------------------------
+commonPage:
+  js:
+  css: 
+    browserScrollBar: /css/common/browserScrollBar.css
+    gradientRamp: /css/common/gradientRamp.css
 indexPage:
   js:
     header: /js/index/header.js

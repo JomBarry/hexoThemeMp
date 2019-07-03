@@ -1,0 +1,76 @@
+.grad_purple_red {
+    background: -webkit-linear-gradient(160deg, #a200ff 20%, #cf3700 80%);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(160deg, #a200ff 20%, #cf3700 80%);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(160deg, #a200ff 20%, #cf3700 80%);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(160deg, #a200ff 20%, #cf3700 80%);
+    /* 标准的语法 */
+}
+
+.grad_yellow_orange {
+    background: -webkit-linear-gradient(160deg, #ffce00 20%, #ff8b00 80%);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(160deg, #ffce00 20%, #ff8b00 80%);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(160deg, #ffce00 20%, #ff8b00 80%);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(160deg, #ffce00 20%, #ff8b00 80%);
+    /* 标准的语法 */
+}
+
+.grad_Cambridge_blue {
+    background: -webkit-linear-gradient(160deg, #00ffd5 20%, #008cff 80%);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(160deg, #00ffd5 20%, #008cff 80%);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(160deg, #00ffd5 20%, #008cff 80%);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(160deg, #00ffd5 20%, #008cff 80%);
+    /* 标准的语法 */
+}
+
+.grad_blue_darkBlue {
+    background: -webkit-linear-gradient(160deg, #0078ff 20%, #002abb 80%);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(160deg, #0078ff 20%, #002abb 80%);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(160deg, #0078ff 20%, #002abb 80%);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(160deg, #0078ff 20%, #002abb 80%);
+    /* 标准的语法 */
+}
+
+.grad_red_purple {
+    background: -webkit-linear-gradient(160deg, #ff0064 20%, #ca00ff 80%);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(160deg, #ff0064 20%, #ca00ff 80%);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(160deg, #ff0064 20%, #ca00ff 80%);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(160deg, #ff0064 20%, #ca00ff 80%);
+    /* 标准的语法 */
+}
+
+.grad_purple_blue {
+    background: -webkit-linear-gradient(160deg, #b100ff 20%, #00b3ff 80%);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(160deg, #b100ff 20%, #00b3ff 80%);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(160deg, #b100ff 20%, #00b3ff 80%);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(160deg, #b100ff 20%, #00b3ff 80%);
+    /* 标准的语法 */
+}
+
+.grad_white_black {
+    background: -webkit-linear-gradient(0deg, #fff 0%, #000 100%);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(0deg, #fff 0%, #000 100%);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(0deg, #fff 0%, #000 100%);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(0deg, #fff 0%, #000 100%);
+    /* 标准的语法 */
+}

@@ -1,0 +1,150 @@
+
+<link rel="stylesheet" type="text/css" href="<%= theme.libs.floatingMenu.css.zzsc %>">
+<style type="text/css">
+	.floatingMenu>.navbar{
+		width: 150px;
+		height: 150px;
+		line-height: 150px;
+		border-radius: 50%;
+		background: #fff;
+		margin: 70px auto;
+		position: relative;
+		cursor: pointer;
+		text-align: center;
+		font-size: 1.75em;
+		font-weight: bold;
+		color: #99b977;
+		transition: 0.24s 0.2s;
+	}
+	.floatingMenu>.navbar:hover{
+		background: rgba(255, 255, 255, 0.75);
+	}
+	.floatingMenu>.navbar .menu{
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		position: absolute;
+		top: -75px;
+		left: -75px;
+		border: 150px solid transparent;
+		cursor: default;
+		border-radius: 50%;
+		transform: scale(0);
+		transition: transform 1.4s 0.07s;
+		z-index: -1;
+	}
+	.floatingMenu>.navbar:hover .menu{
+		transition: transform 0.4s 0.08s, z-index   0s  0.5s;
+		transform: scale(1);
+		z-index: 1;
+	}
+	.floatingMenu>.navbar .menu li{
+		position: absolute;
+		top: -100px;
+		left: -100px;
+		transform-origin: 100px 100px;
+		transition: all 0.5s 0.1s;
+	}
+	.floatingMenu>.navbar:hover .menu li{
+		transition: all 0.6s;
+	}
+	.floatingMenu>.navbar .menu li a{
+		width: 45px;
+		height: 45px;
+		line-height: 45px;
+		border-radius: 50%;
+		background: #fff;
+		position: absolute;
+		font-size: 60%;
+		color: #99b977;
+		transition: 0.6s;
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(1){
+		transition-delay: 0.02s;
+		transform: rotate(85deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(1) a{
+		transition-delay: 0.04s;
+		transform: rotate(635deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(2){
+		transition-delay: 0.04s;
+		transform: rotate(125deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(2) a{
+		transition-delay: 0.08s;
+		transform: rotate(595deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(3){
+		transition-delay: 0.06s;
+		transform: rotate(165deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(3) a{
+		transition-delay: 0.12s;
+		transform: rotate(555deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(4){
+		transition-delay: 0.08s;
+		transform: rotate(205deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(4) a{
+		transition-delay: 0.16s;
+		transform: rotate(515deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(5){
+		transition-delay: 0.1s;
+		transform: rotate(245deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(5) a{
+		transition-delay: 0.2s;
+		transform: rotate(475deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(6){
+		transition-delay: 0.12s;
+		transform: rotate(285deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(6) a{
+		transition-delay: 0.24s;
+		transform: rotate(435deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(7){
+		transition-delay: 0.14s;
+		transform: rotate(325deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(7) a{
+		transition-delay: 0.28s;
+		transform: rotate(395deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(8){
+		transition-delay: 0.16s;
+		transform: rotate(365deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(8) a{
+		transition-delay: 0.32s;
+		transform: rotate(355deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(9){
+		transition-delay: 0.18s;
+		transform: rotate(405deg);
+	}
+	.floatingMenu>.navbar:hover .menu li:nth-child(9) a{
+		transition-delay: 0.36s;
+		transform: rotate(315deg);
+	}
+</style>
+<div class="floatingMenu hide-on-med-and-down">
+    <div class="navbar">主菜单
+        <ul class="menu">
+            <li><a href="#" class="fa fa-facebook"></a></li>
+            <li><a href="#" class="fa fa-google-plus"></a></li>
+            <li><a href="#" class="fa fa-twitter"></a></li>
+            <li><a href="#" class="fa fa-linkedin"></a></li>
+            <li><a href="#" class="fa fa-pinterest"></a></li>
+            <li><a href="#" class="fa fa-rss"></a></li>
+            <li><a href="#" class="fa fa-instagram"></a></li>
+            <li><a href="#" class="fa fa-skype"></a></li>
+            <li><a href="#" class="fa fa-github"></a></li>
+        </ul>
+    </div>
+</div>
+<div style="text-align:center;clear:both;">

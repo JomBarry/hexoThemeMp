@@ -1,15 +1,65 @@
 <ul id="slide-out" class="side-nav">
     <li><div class="userView">
         <div class="background">
-        <img src="images/office.jpg">
+        <img src="<%= theme.phoneSlide.userBackground %>">
         </div>
-        <a href="#!user"><img class="circle" src="http://www.materializecss.cn/images/yuna.jpg"></a>
-        <a href="#!name"><span class="white-text name">张三</span></a>
-        <a href="#!email"><span class="white-text email">jdandturk@sina.com</span></a>
+        <% 
+        var aboutUrl = "#!about";
+        Object.keys(theme.menu).forEach(menuItem => {
+            if(menuItem == "about" || menuItem == "About"){
+                aboutUrl = theme.menu[menuItem].url;
+            }
+        }); %>
+        <a href="<%= aboutUrl %>"><img class="circle" src="<%= theme.user.pic %>"></a>
+        <% 
+        var userName = "username",emil = "xxxxxxxxxxx@xxx.com";
+        if(theme.user.name){
+            userName = theme.user.name
+        }
+        if(theme.user.emil){
+            emil = theme.user.emil
+        } %>
+        <a href="#!name"><span class="white-text name"><%= userName %></span></a>
+        <a href="#!email"><span class="white-text email"><%= emil %></span></a>
     </div></li>
-    <li><a href="#!"><i class="material-icons">cloud</i>带图标的第一链接</a></li>
-    <li><a href="#!">第二链接</a></li>
+    <% Object.keys(theme.menu).forEach(menuItem => { %>
+        <li><a href="<%= theme.menu[menuItem].url %>">
+        <% if(theme.menu[menuItem].icon) { %>
+            <i class="fa fa-<%= theme.menu[menuItem].icon %>"></i>
+        <% } %>
+        <%= menuItem %></a></li>
+    <% }); %>
     <li><div class="divider"></div></li>
-    <li><a class="subheader">子标题</a></li>
-    <li><a class="waves-effect" href="#!">带波纹效果的第三链接</a></li>
+    <% 
+    var siteDescription = "网站描述";
+    if(config.description){
+        siteDescription = config.description;
+    }
+     %>
+    <li><a class="subheader"><%= siteDescription %></a></li>
 </ul>
+
+<script>
+// header phone set
+<% 
+    var phoneSlidePosition='left',closeOnClick = false,draggable = true,menuWidth = 240;
+    if (theme.phoneSlide.position) {
+        phoneSlidePosition = theme.phoneSlide.position
+    } 
+    if(theme.phoneSlide.closeOnClick){
+        closeOnClick = theme.phoneSlide.closeOnClick;
+    }
+    if(theme.phoneSlide.draggable){
+        draggable = theme.phoneSlide.draggable;
+    }
+    if(theme.phoneSlide.menuWidth){
+        menuWidth = theme.phoneSlide.menuWidth;
+    }
+%>
+$('.button-collapse').sideNav({
+    menuWidth: <%= menuWidth %>, // Default is 240
+    edge: '<%= phoneSlidePosition %>', // Choose the horizontal origin
+    closeOnClick: <%= closeOnClick %>, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    draggable: <%= draggable %> // Choose whether you can drag to open on touch screens
+});
+</script>

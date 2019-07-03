@@ -1,10 +1,153 @@
+<script type="text/javascript" src="<%= theme.libs.tocbot.js %>"></script>
+<link rel="stylesheet" href="<%= theme.libs.tocbot.css %>">
+<style>
+    .is-position-fixed {
+        position:fixed !important;
+        top: 70px;
+    }
+    .tocTitle{
+        padding:10px 10px 10px 20px;
+        font-size:1.5rem;
+    }
+    #js-toc{
+        padding:10px;
+        overflow: auto;
+        max-height: 50px;
+    }
+    .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+    #js-toc ol{
+        list-style-type: none;
+    }
+    .postStatistics{
+        padding:10px 10px 10px 20px;
+        font-size:0.7rem;
+    }
+    .postStatistics>table{
+        margin: 5px 0;
+        border:0 !important;
+        padding:0 !important;
+        background-color: transparent;
+    }
+    .postStatistics>table tr th{
+        border:0 !important;
+        padding:0 !important;
+        background-color: transparent;
+    }
+</style>
+
+<div class="tocTitle"><i class="fa fa-list"></i>&nbsp目录</div>
+<div id="js-toc"></div>
+<div class="postStatistics">
+    <table>
+        <tr>
+            <th><i class="fa fa-calendar"></i>&nbsp发布时间：</th><th style="padding-right: 5px !important;">xxxx</th>
+            <th><i class="fa fa-file-text-o"></i>&nbsp文章字数：</th><th>xxxx</th>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th><i class="fa fa-bullseye"></i>&nbsp浏览数目：</th><th style="padding-right: 5px !important;">xxxx</th>
+            <th><i class="fa fa-eye"></i>&nbsp阅读时长：</th><th>xxxx</th>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th><i class="fa fa-linode"></i>分类：</th>
+            <% page.categories.map(pageCategorieItem => { %>
+                <th><%= pageCategorieItem.name %>|</th>
+            <% }); %>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th><i class="fa fa-stack-exchange"></i>&nbsp评论：</th><th>xxxx</th>
+        </tr>
+    </table>
+    <div>
+        <i class="fa fa-tags"></i>标签：
+        <% page.tags.map(pageTagsItem => { %>
+            |<%= pageTagsItem.name %>|
+        <% }); %>
+    </div>
+</div>
+
 <script>
+
+    var rightSideBarWidth = $('.toc-fex').width();
+    $('#js-toc').css('width',rightSideBarWidth+'px');
+    $('.tocTitle').css('width',rightSideBarWidth+'px');
+    $('.postStatistics').css('width',rightSideBarWidth+'px');
+    var windowInnerHeight = $(window).innerHeight();
+    $('#js-toc').css('max-height',(windowInnerHeight*0.6)+'px');
+    // console.log(windowInnerHeight);
+    
+    
+    
     tocbot.init({
         // 在哪里渲染目录.
-        tocSelector: '#tocbot',
+        tocSelector: '#js-toc',
         // 在哪里抓取标题来构建目录.
-        contentSelector: '#js-toc-content',
+        contentSelector: '#tocbot-content',
         // 在contentSelector元素中抓取哪些标题.
-        headingSelector: 'h1, h2, h3',
-    });    
+        headingSelector: 'h1, h2, h3, h4, h5, h6',
+        // 匹配ignoreSelector的标题将被跳过.
+        ignoreSelector: '.js-toc-ignore',
+        // 用于内容中相对或绝对定位容器中的标题
+        hasInnerContainers: false,
+        // 要添加到链接的主类.
+        linkClass: 'toc-link',
+        // 添加到链接的额外类.
+        extraLinkClasses: '',
+        // 类添加到活动链接,
+        // 与页面最顶部标题对应的链接.
+        activeLinkClass: 'is-active-link',
+        // 要添加到列表中的主类.
+        listClass: 'toc-list',
+        // 要添加到列表中的额外类.
+        extraListClasses: '',
+        // 类，该类在列表应折叠时添加.
+        isCollapsedClass: 'is-collapsed',
+        // 类，该类在列表应该可以折叠但不一定折叠时添加.
+        collapsibleClass: 'is-collapsible',
+        // 类添加到列表项.
+        listItemClass: 'toc-list-item',
+        // 多少个船首高度不应塌陷.
+        // 例如，数字6将显示此后的所有内容
+        // 只有6个标题级别，数字0会将它们全部折叠.
+        // 当您滚动到其中的标题时，隐藏的部分将打开和关闭.
+        collapseDepth: 0,
+        // 平滑滚动启用.
+        scrollSmooth: true,
+        // 平滑滚动时间.
+        scrollSmoothDuration: 420,
+        // 滚动端回调.
+        scrollEndCallback: function (e) {  },
+        scrollSmoothOffset: -64,
+        // 标题与文档顶部之间的偏移量(这是为了进行小的调整).
+        headingsOffset: 1,
+        // 事件触发之间的超时，以确保它不是太快(出于性能原因).
+        throttleTimeout: 50,
+        // 元素将positionFixedClass添加到.
+        positionFixedSelector: '.toc-fex',
+        // 要添加的“固定位置”类，以便在向下滚动到fixedSidebarOffset之后使侧栏固定.
+        positionFixedClass: 'is-position-fixed',
+        // fixedSidebarOffset可以是任何数字，但默认情况下被设置为auto，
+        // 它将fixedSidebarOffset从init上文档的顶部设置到侧栏元素的偏移量顶部.
+        fixedSidebarOffset: '234',
+        // includeHtml可以设置为true，以包含来自heading节点的HTML标记，而不只是包含textContent.
+        includeHtml: true,
+        // onclick函数应用于toc中的所有链接。将以事件作为第一个参数被调用，
+        // 并且该参数可用于停止、传播、防止默认值或执行操作
+        onClick: false,
+        // orderedList可以设置为false来生成无序列表(ul)，而不是有序列表(ol)
+        orderedList: true,
+        // 如果有固定的文章滚动容器，设置为计算标题的偏移量
+        scrollContainer: null,
+        // 如果外部系统已经呈现了ToC DOM，则阻止它的呈现
+        skipRendering: false
+    }); 
 </script>
+
