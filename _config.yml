@@ -1,0 +1,137 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+# 网站标题
+# 网站副标题
+# 网站描述(SEO)
+# 网站关键词
+# 您的名字
+# 网站使用的语言
+# 网站时区
+title: hexo
+subtitle: 共享天下
+description: 网页描述
+keywords: 
+  - C/C++
+  - Java
+  - Java Web
+  - Spring
+  - Android
+  - 网络技术
+  - 网络安全
+author: Jom Barry
+language: zh-CN
+timezone:
+
+# URL
+## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
+# 网址
+# 网站根目录
+# 文章的 永久链接 格式
+# 永久链接中各部分的默认值
+# （如果您的网站存放在子目录中，
+# 例如 http://yoursite.com/blog，则请将您的 url 设为 http://yoursite.com/blog 并把 root 设为 /blog/）
+url: /
+root: /
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+
+# Directory
+# 资源文件夹，这个文件夹用来存放内容
+# 公共文件夹，这个文件夹用于存放生成的站点文件
+# 标签文件夹
+# 归档文件夹
+# 分类文件夹
+# Include code 文件夹
+# 国际化（i18n）文件夹
+# 跳过指定文件的渲染，您可使用 glob 表达式来匹配路径
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+# 新文章的文件名称
+# 预设布局
+# 在中文和英文之间加入空格
+# 把标题转换为 title case
+# 在新标签中打开链接
+# 把文件名称转换为 (1) 小写或 (2) 大写
+# 显示草稿
+# 启动 Asset 文件夹
+# 把链接改为与根目录的相对位址
+# 显示未来的文章
+# 代码块的设置
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: false
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+  
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+  
+# Category & Tag
+# 默认分类
+# 分类别名	
+# 标签别名	
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+# 日期格式
+# 时间格式	
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+
+# Pagination
+## Set per_page to 0 to disable pagination
+# 每页显示的文章量 (0 = 关闭分页功能)
+# 分页目录
+per_page: 10
+pagination_dir: page
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+# 当前主题名称
+theme: mp
+
+baidu_url_submit:
+  count: 3 ## 比如3，代表提交最新的三个链接
+  host: www.xiongmaocloud.cn ## 在百度站长平台中注册的域名
+  token: your_token ## 请注意这是您的秘钥， 请不要发布在公众仓库里!
+  path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+# 部署部分的设置
+deploy:
+- type: git
+  repo: git@129.28.150.14:/home/git/repos/blog.git
+- type: baidu_url_submitter

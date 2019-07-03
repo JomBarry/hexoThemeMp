@@ -1,0 +1,25 @@
+<footer class="page-footer purple">
+    <div class="container">
+    <div class="row">
+        <div class="col l6 s12">
+        <h5 class="white-text"><%= config.title %></h5>
+        <p class="grey-text text-lighten-4"><%= config.description %></p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+        <h5 class="white-text"><%-  __('FriendLink') %></h5>
+        <ul>
+            <% Object.keys(theme.FriendLink).forEach(item =>{ %>
+            <li><a class="grey-text text-lighten-3" href="http://<%= theme.FriendLink[item].url %>"><%= item %></a></li>
+            <% }); %>
+        </ul>
+        </div>
+    </div>
+    </div>
+    <div class="footer-copyright">
+    <div class="container">
+    © 2019 Copyright 文本
+    <a class="grey-text text-lighten-4 right" href="#!">更多链接</a>
+    </div>
+    </div>
+</footer>
+<script type="text/javascript" src="<%= theme.indexPage.js.test %>"></script>

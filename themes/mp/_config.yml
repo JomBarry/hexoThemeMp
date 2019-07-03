@@ -1,0 +1,186 @@
+## 设置String时尽量添加 " "  若不设值去掉 " " 
+
+##---------------------------------------------------------------------------------------
+# 网站配置
+##---------------------------------------------------------------------------------------
+site:
+  icon: /medias/favicon.ico # 网站图标
+
+
+##---------------------------------------------------------------------------------------
+# header
+##---------------------------------------------------------------------------------------
+# nav
+## 支持rgba透明设置
+nav:
+  enable: false
+  color: "fff"
+  textColor: "000"
+
+# menu
+## icon 为 fontawesome框架
+## 可以查找 http://fontawesome.dashgame.com/ 并设置 
+menu:
+  Index:
+    url: / #String
+    icon:  #String
+  Archives:
+    url: /categories/Android
+    icon:
+  About:
+    url: /
+    icon:
+  FriendLink: 
+    url: /
+    icon:
+
+# banner
+## 有多个banner直接添加即可
+## icon 为 fontawesome框架
+## 可以查找 http://fontawesome.dashgame.com/ 并设置
+indexBanner:
+  btn:
+    item1:
+      size: 2 #1-5
+      icon: "qq"
+      url: "https://github.com/JomBarry"
+    item2:
+      size: 2
+      icon: "git"
+      url: "https://github.com/JomBarry"
+  banner:
+    item1:
+      url: /
+      title: "BarryBlog"
+      content: "wellcome !!!"
+      image: "/medias/images/banner/background1.jpg"
+    item2:
+      url: /
+      title: "BarryBlog"
+      content: "wellcome !!!"
+      image: "/medias/images/banner/background2.jpg"
+    
+
+##---------------------------------------------------------------------------------------
+# 标题（一）
+##---------------------------------------------------------------------------------------
+indexTitle1:
+  icon: "thumbs-up"
+  text: "推荐文章"
+  color: "000"
+  lineColor: "fff"
+  fontWeight: false
+  showPostsTitle: # 推荐文章时间 YYYY-MM-DD hh:mm:ss
+    - "2019-07-01 18:55:11"
+    - "2019-07-01 14:50:08"
+    - 
+    - 
+
+##---------------------------------------------------------------------------------------
+# 标题（二）
+##---------------------------------------------------------------------------------------
+## 按照 Categories 分类
+## 输入文章类别相关设置 自动判断并设值样式
+indexTitle2:
+  Android:
+    icon: "android"
+    text: "Android"
+    color: "000"
+    lineColor: "fff"
+    fontWeight: false
+  Java:
+    icon: "cubes"
+    text: ""
+    color: "000"
+    lineColor: "fff"
+    fontWeight: false
+
+##---------------------------------------------------------------------------------------
+# 标签云
+##---------------------------------------------------------------------------------------
+# hexo-tag-cloud
+tag_cloud:
+    textFont: Trebuchet MS, Helvetica
+    textColor: '#333'
+    textHeight: 25
+    outlineColor: '#E2E1D1'
+    maxSpeed: 0.5
+
+
+##---------------------------------------------------------------------------------------
+# 文章设置 Posts
+##---------------------------------------------------------------------------------------
+# 默认
+posts: 
+  defaultThumbnail: # 默认缩略图
+    - /medias/images/postDemo/demo1.jpg
+    - /medias/images/postDemo/demo2.jpg
+    - /medias/images/postDemo/demo3.jpg
+  dateFormat: YYYY-MM-DD # 日期格式 时间显示24制（H:mm:ss）12制（hh:mm:ss）
+  defaultBanner: # postBanner轮播图 若在post内部设置 在markdown文档上部添加 banner：[] 属性
+    - "/medias/images/postBanner/background1.jpg"
+    - "/medias/images/postBanner/background2.jpg"
+    - "/medias/images/postBanner/background3.jpg"
+    - "/medias/images/postBanner/background4.jpg"
+
+
+##---------------------------------------------------------------------------------------
+# 友情链接
+##---------------------------------------------------------------------------------------
+FriendLink: 
+    百度: 
+      url: www.baidu.com
+      icon: 
+    搜狗: 
+      url: www.sogou.com
+      icon: 
+
+
+
+
+
+
+
+
+
+
+
+##----------------------------------------------------------------------------------------
+## 资源文件
+##----------------------------------------------------------------------------------------
+libs:
+  medias:
+  materialize:
+    js: /libs/materialize/js/materialize.min.js
+    css: /libs/materialize/css/materialize.min.css
+  jQuery:
+    js: /libs/jquery/jquery-3.4.1.min.js
+  fontAwesome: 
+    css: /libs/fontAwesome/css/font-awesome.min.css
+  tocbot: 
+    js: /libs/tocbot/tocbot.min.css
+    css: /libs/tocbot/tocbot.css
+  lightgallery: 
+    js: /libs/lightgallery/js/lightgallery.min.js
+    css: /libs/lightgallery/css/lightgallery.css
+
+
+
+##----------------------------------------------------------------------------------------
+## 配置文件
+##----------------------------------------------------------------------------------------
+indexPage:
+  js:
+    header: /js/index/header.js
+    main: /js/index/main.js
+    test: /js/test.js
+  css:
+    main: /css/index/main.css
+postPage:
+  js:
+    commonBanner: /js/post/postBannerCommon.js
+    main: /js/post/main.js
+    mainCss: /js/post/main_css.js
+  css:
+    post: /css/post/post.css
+    main: /css/post/main.css

@@ -1,0 +1,102 @@
+/******************* sreach materialize masonry **************************/
+
+.grid:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.grid-item {
+    float: left;
+    color: #FAFAFA;
+}
+
+.tagbgdc {
+    padding: 4px 8px;
+    border-radius: 3px;
+    border-radius: 5px;
+}
+
+.bgdcgreen {
+    -webkit-animation-name: greenPulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+}
+
+.bgdcyellow {
+    -webkit-animation-name: yellowPulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+}
+
+.bgdcblue {
+    -webkit-animation-name: bluePulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+}
+
+.bgdcred {
+    -webkit-animation-name: redPulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes greenPulse {
+    from {
+        background-color: #749a02;
+        -webkit-box-shadow: 0 0 9px #FAFAFA;
+    }
+    50% {
+        background-color: #91bd09;
+        -webkit-box-shadow: 0 0 18px #91bd09;
+    }
+    to {
+        background-color: #749a02;
+        -webkit-box-shadow: 0 0 9px #FAFAFA;
+    }
+}
+
+@-webkit-keyframes yellowPulse {
+    from {
+        background-color: rgb(245, 245, 11);
+        -webkit-box-shadow: 0 0 9px #FAFAFA;
+    }
+    50% {
+        background-color: yellow;
+        -webkit-box-shadow: 0 0 18px yellow;
+    }
+    to {
+        background-color: rgb(247, 247, 10);
+        -webkit-box-shadow: 0 0 9px #FAFAFA;
+    }
+}
+
+@-webkit-keyframes bluePulse {
+    from {
+        background-color: rgb(13, 13, 238);
+        -webkit-box-shadow: 0 0 9px #FAFAFA;
+    }
+    50% {
+        background-color: blue;
+        -webkit-box-shadow: 0 0 18px blue;
+    }
+    to {
+        background-color: rgb(13, 13, 238);
+        -webkit-box-shadow: 0 0 9px #FAFAFA;
+    }
+}
+
+@-webkit-keyframes redPulse {
+    from {
+        background-color: rgb(209, 3, 3);
+        -webkit-box-shadow: 0 0 9px #FAFAFA;
+    }
+    50% {
+        background-color: red;
+        -webkit-box-shadow: 0 0 18px red;
+    }
+    to {
+        background-color: rgb(209, 3, 3);
+        -webkit-box-shadow: 0 0 9px #FAFAFA;
+    }
+}

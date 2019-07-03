@@ -1,0 +1,13 @@
+<div class="slider fullscreen" style="background-color:#D1D2CD;">
+    <ul class="slides">
+        <% Object.keys(theme.banner).forEach( key => { %>
+            <li>
+                <img src="<%= theme.banner[key].img %>"/>
+                <div class="caption center-align">
+                    <h3>这是我们的大标签行！</h3>
+                    <h5 class="light grey-text text-lighten-3">这里是我们的小标语。</h5>
+                </div>
+            </li>
+        <% }); %>
+    </ul>
+</div>

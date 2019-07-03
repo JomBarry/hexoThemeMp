@@ -1,0 +1,71 @@
+<% var Theme = theme %>
+<% // 设置颜色和背景动画
+  var colorHeader = Theme.header.color;
+  var lightenColorHeader = Theme.header.lightenColorHeader;
+  if (colorHeader == null) {
+    colorHeader = "light-blue";
+  }
+  if(lightenColorHeader == null){
+    lightenColorHeader = ""
+  }
+%>
+<% var logoTitle = config.title %>
+<% // 设置显示条目
+  var indexKey=0; var showIndexKey = Theme.header.indexKey;
+  if (showIndexKey == null) {
+    showIndexKey = 6;
+  }else if (showIndexKey >=6) {
+    showIndexKey = 6;
+  }
+  // 设置导航栏按钮背景动画
+  var indexKeyAnimation = Theme.header.indexKeyAnimation;
+  if(indexKeyAnimation == null){
+    indexKeyAnimation = ""
+  }
+%>
+
+<header class="navbar-fixed">
+  <nav id="headerNav" class="changeColor pushpin-demo-nav <%= colorHeader %> <%= lightenColorHeader %> animated delay-0s fadeInDown">
+    <div class="nav-wrapper <%= colorHeader %> <%= lightenColorHeader %>">
+      <div class="container">
+        <a href="#" class="brand-logo"><%= logoTitle %></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% var first = true; 
+            Object.keys(Theme.menu).forEach(function(key){ 
+              indexKey++
+              if(indexKey <= showIndexKey){%>
+                <li class="<%= indexKeyAnimation %>">
+                  <a href="<%= Theme.menu[key].url %>"><%-  __('menu.' + key) %></a>
+                </li>
+              <%} else if(indexKey > showIndexKey){ %>
+                <li>
+                  <% if(indexKey == showIndexKey+1){ %>
+                    <a href="#!" class="dropdown-button" data-activates="dropdownHeaderNav" data-beloworigin="true" data-gutter="0" data-alignment="right"><i class="material-icons">add</i></a>
+                  <% } %>
+                  <ul id="dropdownHeaderNav" class="dropdown-content" style="border-radius: 3px;">
+                    <% if(first){
+                      var indexKey2 = 0
+                      first = false;
+                      Object.keys(Theme.menu).forEach(function(key){ 
+                        indexKey2++;
+                        if(indexKey2 >= showIndexKey+1){ %>
+                          <li>
+                            <a href="<%= Theme.menu[key].url %>"><%= key %></a>
+                          </li>
+                        <% }
+                      });
+                    } %>
+                  </ul>
+                </li>
+            <%} %>
+          <%}); %>
+          <li class="<%= indexKeyAnimation %>"><a href="#modal1"><i class="material-icons">search</i></a></li>
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+      </div>
+    </div>
+  </nav>
+</header>
+<%- partial("_partial/header_phone")%>
+<%- partial("_widget/buttonDownStyle")%>
+<%- partial("_widget/search")%>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html lang="<%= config.language %>">
+<%- partial('_partial/head') %>
+
+<body>
+
+<%- partial('_partial/header') %>
+<script type="text/javascript">
+var sogou_ad_id=1041838;
+var sogou_ad_height=300;
+var sogou_ad_width=120;
+</script>
+<script type="text/javascript" charset="gb2312" src="http://images.sohu.com/cs/jsfile/js/f.js"></script>
+
+<%- body %>
+<%- partial('_partial/footer') %>
+
+<%- partial('_partial/search') %>
+<%- partial('_partial/back-top') %>
+<% console.log("----------------------------"); %>
+<script src="<%- theme.libs.js.materialize %>"></script>
+<script src="<%- theme.libs.js.masonry %>"></script>
+<script src="<%- theme.libs.js.aos %>"></script>
+<script src="<%- theme.libs.js.scrollProgress %>"></script>
+<script src="<%- theme.libs.js.lightgallery %>"></script>
+<script src="/js/matery.js"></script>
+
+<%- partial('_partial/google-analytics') %>
+<% if (theme.clicklove.enable) { %>
+    <script src="<%- theme.libs.js.clicklove %>"></script>
+<% } %>
+<% if (theme.busuanziStatistics && theme.busuanziStatistics.enable) { %>
+    <script async src="<%- theme.libs.js.busuanzi %>"></script>
+<% } %>
+
+</body>
+</html>

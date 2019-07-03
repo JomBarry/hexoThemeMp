@@ -1,0 +1,213 @@
+
+<% 
+// 设置随机值
+// 默认图片处使用
+function randomPic(postName){
+    var count = postName.length << 3,defaultThumbnailLength = theme.posts.defaultThumbnail.length;
+    while (count >= defaultThumbnailLength) {
+        count %= defaultThumbnailLength;
+    }
+    return count;
+} %>
+<main>
+    <link rel="stylesheet" href="<%= theme.indexPage.css.main %>">
+    <header>
+        <%- partial('_partial/index_header') %>
+        <%- partial('_partial/index_banner') %>
+    </header>
+    <div class="row" style="background-color:#F1F0EE;padding-top:20px;">
+        <div class="col s0 m0 l1"></div>
+        <div class="col s12 m12 l10" >
+            <h5 style="padding:0 0 5px 10px;border-bottom:1px solid #<%= theme.indexTitle1.lineColor %>;color:#<%= theme.indexTitle1.color %>;font-weight:<%= theme.indexTitle1.fontWeight==true?"bold":"normal" %>;"> <i class="fa fa-<%= theme.indexTitle1.icon %>"></i> <%= theme.indexTitle1.text %></h5>
+            <div class="row" style="margin:0;">
+                <% 
+                // 设置推荐文章 按照时间（recommend模板中值为date）来与yml中的值判断
+                theme.indexTitle1.showPostsTitle.map(showPostsItem => {
+                    if(showPostsItem != null){
+                        var postTagsI = 0;
+                        site.posts.sort('date').reverse().map(postsItem => {
+                            var postsItemRecommend = date(postsItem.recommend,"YYYY-MM-DD H:mm:ss");
+                            if( showPostsItem == postsItemRecommend ){  %>
+                <a href="/tags/Android/index.html">
+                <div class="col s6 m4 l3" style="padding:0px 10px;">
+                    <div class="card small hoverable indexCard01" style=" height:240px;">
+                        <a href="<%= postsItem.canonical_path %>">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <div style="border-bottom-left-radius: 5px;position: absolute;left:0;padding:5px 10px 3px 5px;font-size: 0.1em;color:#f5f5f5;z-index:2;"><%= date(postsItem.date,theme.posts.dateFormat) %></div>
+                            <% postsItem.categories.map(postsItemCategoriesItem => { %>
+                            <div class="light-green accent-3" style="border-bottom-left-radius: 5px;position: absolute;right:0;padding:5px 10px 3px 5px;font-size: 0.1em;z-index:2;"><%= postsItemCategoriesItem.name %></div>
+                            <% }); %>
+                            <h4 class="indexPostTitle01 truncate" style="box-shadow: inset 0 0 1000px rgba(0, 0, 0,0.5);position: absolute;top:0;bottom:0;left:0;right:0;margin:0;padding:0 10px;;text-align:center;font-weight:bold;color:white;"><%= postsItem.title %></h4>
+                            <% if(postsItem.thumbnail != null) { %>
+                            <img class="activator" src="<%= postsItem.thumbnail %>">
+                            <% } else { %>
+                            <img class="activator" src="<%=  theme.posts.defaultThumbnail[randomPic(postsItem.title)] %>">
+                            <% } %>
+                            <div style="position: absolute;bottom:0;left:0;right:0;padding:5px 10px;background-color:rgba(158, 158, 158,0.5);font-size: 0.1em;">
+                                <div style="display:inline-block;font-weight:bold;float: right;color:#e0e0e0 ;"><i class="fa fa-commenting-o"></i> 阅读量:99+</div>
+                                <div style="display:inline-block;font-weight:bold;float: right;margin:0 2px;color:#e0e0e0 ;">|</div>
+                                <div style="display:inline-block;font-weight:bold;float: right;color:#e0e0e0 ;"><i class="fa fa-commenting-o"></i> 评论数:99+</div>
+                            </div>
+                        </div>
+                        </a>
+                        <div class="card-content" style="padding:10px;">
+                        <a href="<%= postsItem.canonical_path %>">
+                            <p class="" style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;word-wrap:break-word;word-break:break-all;overflow: hidden;color:#757575;"><%- strip_html(postsItem.content).substring(0, 120) %></p>
+                        </a>
+                        </div>
+                        <div style="position:absolute;bottom:0;padding:0 10px 10px 10px;">
+                            <% var TagsI = 0;
+                            postsItem.tags.map(postsItemTagsItem => {  %>
+                            <div class="hoverable chip indexPostChip <%= 'indexPostTags01'+postTagsI+ TagsI %>" style="font-size:1px;padding-top:2px;padding-bottom:2px;"><%= postsItemTagsItem.name %></div>
+                            <% TagsI++; }); %>
+                            <div class="chip indexPostChip indexPostTags01dot" style="display:none;font-size:1px;padding-top:2px;padding-bottom:2px;">...</div>
+                        </div>
+                    </div>
+                </div>
+                </a>
+                <% } postTagsI++; }); } }); %>
+            </div>
+        </div>
+        <div class="col s0 m0 l1"></div>
+    </div>
+
+    <div class="row">
+        <div class="col s0 m0 l1"></div>
+        <div class="col s12 m12 l10">
+            <div class="row">
+                <%# 按文章分类进行划分 siteCategoriesItem %>
+                <div class="col s12 m12 l9" style="background-color:rgb(216, 225, 224); margin-top:30px;">
+                <% if(site.categories && site.categories.length > 0){
+                var categoryPostTagsI = 0;
+                site.categories.map(siteCategoriesItem => { %>
+                    <%
+                    // 标题（二）
+                    // 按照 Categories 分类 并根据前面的变量进行用户自定义设置
+                    %>
+                    <% var setTitle = false;
+                    Object.keys(theme.indexTitle2).forEach(indexTitle2Item => { 
+                    if (siteCategoriesItem.name == indexTitle2Item) { %>
+                    <h5 style="padding:0 0 5px 10px;border-bottom:1px solid #<%= theme.indexTitle2[indexTitle2Item].lineColor %>;font-weight:<%= theme.indexTitle2[indexTitle2Item].fontWeight==true?"bold":"normal" %>;color:#<%= theme.indexTitle2[indexTitle2Item].color %>;">
+                        <i class="fa fa-<%= theme.indexTitle2[indexTitle2Item].icon %>"></i>&nbsp<span><%= theme.indexTitle2[indexTitle2Item].text %></span>
+                        <% if(theme.indexTitle2[indexTitle2Item].text == ''){ %>
+                        <span><%= siteCategoriesItem.name %></span>
+                        <% } %>
+                    </h5>
+                    <% setTitle = true; } %>
+                    <% }); %>
+                    <% if(!setTitle){ %>
+                    <h5 style="padding:0 0 5px 10px;border-bottom:1px solid #fff;">
+                        <i class="fa fa-cubes"></i>&nbsp<span><%= siteCategoriesItem.name %></span>
+                    </h5>
+                    <% } %>
+                    <% 
+                    // 设置对应Categories的文章获取最新的
+                    // 文章按时间反向排列
+                     %>
+                    <div class="row" style="margin:0;">
+                    <% var postTagsI = 0;
+                    siteCategoriesItem.posts.sort('date').reverse().map(siteCategoriesItemPostItem => { %>
+                        <div class="col s12 m6 l4" style="padding:0px 10px;">
+                            <div class="card small hoverable indexCard02" style=" height:220px;">
+                                <a href="<%= siteCategoriesItemPostItem.canonical_path %>">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <div style="border-bottom-left-radius: 5px;position: absolute;left:0;padding:5px 10px 3px 5px;font-size: 0.1em;color:#f5f5f5;z-index:2;"><%= date(siteCategoriesItemPostItem.date,theme.posts.dateFormat) %></div>
+                                    <div class="light-green accent-3" style="border-bottom-left-radius: 5px;position: absolute;right:0;padding:5px 10px 3px 5px;font-size: 0.1em;z-index:2;"><%= siteCategoriesItem.name %></div>
+                                    <h5 class="indexPostTitle02 truncate" style="box-shadow: inset 0 0 1000px rgba(0, 0, 0,0.5);position: absolute;top:0;bottom:0;left:0;right:0;margin:0;padding:0 10px;;text-align:center;font-weight:bold;color:white;"><%= siteCategoriesItemPostItem.title %></h5>
+                                    <%
+                                    // 设置文章缩略图
+                                    // 没有使用默认图片
+                                    %>
+                                    <% if(siteCategoriesItemPostItem.thumbnail != null) { %>
+                                    <img class="activator" src="<%= siteCategoriesItemPostItem.thumbnail %>">
+                                    <% } else { %>
+                                    <img class="activator" src="<%=  theme.posts.defaultThumbnail[randomPic(siteCategoriesItemPostItem.title)] %>">
+                                    <% } %>
+                                    <div style="position: absolute;bottom:0;left:0;right:0;padding:5px 10px;background-color:rgba(158, 158, 158,0.5);font-size: 0.1em;">
+                                       <div style="display:inline-block;font-weight:bold;float: right;color:#e0e0e0 ;"><i class="fa fa-commenting-o"></i> 阅读量:99+</div>
+                                       <div style="display:inline-block;font-weight:bold;float: right;margin:0 2px;color:#e0e0e0 ;">|</div>
+                                       <div style="display:inline-block;font-weight:bold;float: right;color:#e0e0e0 ;"><i class="fa fa-commenting-o"></i> 评论数:99+</div>
+                                    </div>
+                                </div>
+                                </a>
+                                <div class="card-content" style="padding:10px;">
+                                <a href="<%= siteCategoriesItemPostItem.canonical_path %>">
+                                    <p class="" style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;word-wrap:break-word;word-break:break-all;overflow: hidden;color:#757575;font-size:0.5rem;"><%- strip_html(siteCategoriesItemPostItem.content).substring(0, 120) %></p>
+                                </a>
+                                </div>
+                                <div style="position:absolute;bottom:0;padding:0 10px 5px 10px;">
+                                    <% var tagsI = 0; // 设置标签 在main.js中对每个标签进行判断并计算宽度来显示标签个数
+                                    siteCategoriesItemPostItem.tags.map(siteCategoriesItemPostItemTagsItem => { %>
+                                    <a href=""><div class="hoverable chip indexPostChip <%= 'indexPostTags02'+categoryPostTagsI+postTagsI+tagsI %>" style="font-size:1px;padding-top:2px;padding-bottom:2px;margin-right:2px;"><%= siteCategoriesItemPostItemTagsItem.name %></div></a>
+                                    <% tagsI++; }); %>
+                                    <div class="chip indexPostChip indexPostTags02dot" style="display:none;font-size:1px;padding-top:2px;padding-bottom:2px;margin-right:2px;">...</div>
+                                </div>
+                            </div>
+                        </div>
+                    <% postTagsI++;  }); %>
+                    </div>
+                <% categoryPostTagsI++; }); } %>
+                </div>
+                
+                <div class="col s0 m0 l3 hide-on-med-and-down" style="padding:0;">
+                    <div class="row">
+                        <div class="col s0 m0 l12" style=" margin-top:30px;">
+                            <h5 style="padding:0 0 5px 0px;border-bottom:1px solid #fff;"><i class="fa fa-tags"></i> 标签</h5>
+                            <div style="padding: 50px 2px 50px 2px;">
+                                <%- partial('_widget/tagcloud') %>
+                            </div>
+                        </div>
+                        <div class="col s0 m0 l12" style=" margin-top:30px;">
+                            <h5 style="padding:0 0 5px 0px;border-bottom:1px solid #fff;"><i class="fa fa-user-o"></i> 成长记录</h5>
+                            <div style="padding:0 2px;">
+                                <% for(var item=0 ; item<4 ; item++){ %>
+                                <div class="col s0 m0 l12 hoverable" style="padding:0;margin:0 0 10px 0;">
+                                    <div style="box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);">
+                                        <div class="card horizontal" style="margin:0;border-bottom:0;box-shadow:none;">
+                                            <div class="card-image" style="max-width: 39%;">
+                                                <img style="width:100%;height:100%;" src="http://www.materializecss.cn/images/office.jpg">
+                                            </div>
+                                            <div class="card-stacked" style="background-color:#1FC7E4;">
+                                                <div class="card-content" style="padding:15px 10px;">
+                                                    <p class="" style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;word-wrap:break-word;word-break:break-all;overflow: hidden;color:#757575">salk;lska;ldks;lkadk;sak;lkfkdjskfjlke1231321321312313jjfkdsjkjfkdj</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="padding:5px;background-color:#fff;">
+                                            <p style="margin:0;font-size:0.1em;text-align: center;">2018-06-29</p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <%}%>
+                            </div>
+                        </div>
+                        <div class="col s0 m0 l12" style=" margin-top:30px;">
+                            <h5 style="padding:0 0 5px 0px;border-bottom:1px solid #fff;"><i class="fa fa-area-chart"></i> 统计</h5>
+                            <div style="padding:2px;">
+                                <% for(var i=0 ; i<10 ;i++){ %>
+                                    <div class="chip">
+                                        李四
+                                    </div>
+                                <%}%>
+                                <div class="chip">
+                                    java
+                                </div>
+                                <div class="chip">
+                                    Android
+                                </div>
+                                <div class="chip">
+                                    php
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s0 m0 l1"></div>
+    </div>
+
+    <script type="text/javascript" src="<%= theme.indexPage.js.header %>"></script>
+    <script type="text/javascript" src="<%= theme.indexPage.js.main %>"></script>
+</main>

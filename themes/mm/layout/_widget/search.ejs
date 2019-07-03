@@ -1,0 +1,32 @@
+  <div id="modal1" class="modal" style="border-radius: 5px;">
+    <div class="modal-content">
+      <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name"> Sreach</label>
+      </div>
+      
+      <div class="grid">
+        <% for(var tag in site.tags.data) { 
+            for(var tbgc in theme.tagBackground){
+              if (tbgc==site.tags.data[tag].name) {
+                var tagBackground = theme.tagBackground[tbgc];
+                break;
+              }else if(tbgc == "other"){
+                var tagBackground = theme.tagBackground[tbgc];
+                break;
+              }
+            }%> 
+            <a href="#">
+              <div class="grid-item tagbgdc <%= tagBackground  %>" style="margin:5px;">
+                <%=site.tags.data[tag].name %>
+              </div>
+            </a>
+        <% } %>
+      </div>
+    <% 
+     %>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">取消</a>
+    </div>
+  </div>

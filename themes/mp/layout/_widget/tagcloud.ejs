@@ -1,0 +1,19 @@
+<% if (site.tags.length) { %>
+  <script type="text/javascript" charset="utf-8" src="<%- url_for('/js/tagcloud.js') %>"></script>
+  <script type="text/javascript" charset="utf-8" src="<%- url_for('/js/tagcanvas.js') %>"></script>
+  <div class="widget-wrap">
+    <div id="myCanvasContainer" class="widget tagcloud">
+      <canvas id="resCanvas">
+        <%- tagcloud() %>
+      </canvas>
+    </div>
+  </div>
+  <script>
+    var myCanvasContainerWidth = $('#myCanvasContainer').width();
+    $('#resCanvas').css('width',myCanvasContainerWidth+"px");
+    $(window).resize(function(){
+        var myCanvasContainerWidth = $('#myCanvasContainer').width();
+        $('#resCanvas').css('width',myCanvasContainerWidth+"px");
+    });
+  </script>
+<% } %>

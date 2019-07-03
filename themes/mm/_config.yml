@@ -1,0 +1,102 @@
+# 导航栏
+menu: 
+  Index:
+    url: /
+    icon: 
+  Tags:
+    url: /tags
+    icon: fa-tags
+  Categories:
+    url: /categories
+    icon: fa-bookmark
+  Archives:
+    url: /archives
+    icon: fa-archive
+  About:
+    url: /about
+    icon: fa-user-circle-o
+  Friends:
+    url: /friends
+    icon: fa-address-book
+  
+###################################公共页面配置##################################
+# header
+header: 
+  ## 颜色配置 默认bule null xs_li_10(1-30)
+  color: N/A transparent
+  lightenColorHeader: 
+  ## 显示导航条目数量 默认为6
+  indexKey: 6
+  indexKeyAnimation: xs_li_19
+
+
+
+# 底部滚动条
+## 支持十六进制和常用英文
+scrollProgress: 
+  color: green
+
+# Banner
+banner: 
+  item_1: 
+    img: /medias/banner/background1.jpg
+    title: 
+    content:
+  item_2: 
+    img: /medias/banner/background2.jpg
+    title: 
+    content:
+  item_3: 
+    img: /medias/banner/background3.jpg
+    title: 
+    content:
+  item_4: 
+    img: /medias/banner/background4.jpg
+    title: 
+    content:
+  item_5: 
+    img: /medias/banner/background5.jpg
+    title: 
+    content:
+  item_6: 
+    img: /medias/banner/background6.jpg
+    title: 
+    content:
+
+# 视频配置
+vido: 
+  url: /medias/vido/1.mp4
+
+
+# 标签背景色
+tagBackground: 
+  Android: bgdcgreen
+  Java: bgdcblue
+  other: bgdcred
+
+#########################################资源配置#####################################
+# 引用框架
+libs:
+  js:
+    jquery: /libs/jquery/jquery.min.js
+    materialize: /libs/materialize/materialize.min.js
+    scroll_progress: /libs/scroll_progress/scroll_progress.js
+    button_down_style: /libs/buttonDownStyle/xs.js
+    masonry: /libs/masonry/masonry.pkgd.min.js
+    indexBackground: /libs/backgroundStyle/index.js
+  css:
+    materialize: /libs/materialize/materialize.min.css
+    scroll_progress: /libs/scroll_progress/scroll_progress.css
+    animate: /libs/animate/animate.min.css
+medias:
+  banner1: /medias/banner/timg.jpg
+  banner2: /medias/banner/timg2.jpg
+
+
+## 自己写的JS
+js: 
+  myHeader: /js/my_header.js
+  myIndex: /js/my_index.js
+css:
+  myHeader: /css/my_header.css
+  myIndex: /css/my_index.css

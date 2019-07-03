@@ -1,0 +1,82 @@
+
+<link rel="stylesheet" type="text/css" href="<%- theme.css.myIndex%>" />
+
+<main  class="content" style="width:100%; height:100%;">
+
+    <%- partial('_widget/banner')%>
+    <div class="contentContent">
+        <div class="row">
+            <div class="col s12 m1 l1"></div>
+            <div class="col s12 m10 l10">
+            
+                <div class="card z-depth-2" style="margin:0;border-radius: 10px;background:#C7C7C7;">
+                    <div class="card-content black-text" style="border-radius: 10px;">
+                        <h4 class="center-align" style="color:#fff"><%= config.subtitle %></h4>
+                        <h6 class="center-align"><%= config.description %></h6>
+                    </div>
+                </div>
+                <% for(var p in site.categories.data){ %>
+                    <a href="#">
+                    <div class="hoverable card z-depth-2" style="margin-top:20px;border-radius: 5px;background:#C7C7C7;">
+                        <div class="card-content black-text" style="border-radius: 10px;">
+                            <h4 class="center-align"><%=site.categories.data[p].name %></h4>
+                        </div>
+                    </div>
+                    </a>
+                    <div class="row" style="margin-top:20px;">
+                        <div class="col s12 m12 l12">
+                            <div class="row">
+                                <%  if(page.posts && page.posts.length > 0) {
+                                page.posts.forEach(post => {
+                                if (post.categories && post.categories.length>0) {
+                                    post.categories.forEach(categorie =>{
+                                    if(site.categories.data[p].name == categorie.name){ %>
+                                        <div class="col s12 m4 l3">
+                                        <%console.log(post.path);
+                                        %>
+                                        <a href="<%= post.path %>">
+                                            <div class="card small hoverable" style="border-radius: 8px;background-color: rgba(255,255,255,0.3);">
+                                            <div class="card-image" style="border-top-left-radius: 5px;border-top-right-radius: 5px;">
+                                                <img src="http://www.materializecss.cn/images/sample-1.jpg">
+                                                <span class="card-title"><%=post.title %></span>
+                                            </div>
+                                            <div class="card-content">
+                                                <p class="truncate"> 
+                                                    <% if(post.summary && post.summary.length > 0) { %>
+                                                        <%- post.summary %>
+                                                    <% } else { %>
+                                                        <%- strip_html(post.content).substring(0, 120) %>
+                                                    <% } %>
+                                                </p>
+                                            </div>
+                                            <div class="card-action" style="border-radius: 8px;">
+                                                <% if(post.tags && post.tags.length > 0) {%>
+                                                    <% post.tags.forEach(tag => { 
+                                                        for(var tbgc in theme.tagBackground){
+                                                            if (tbgc==tag.name) {
+                                                                var tagBackground = theme.tagBackground[tbgc];
+                                                                break;
+                                                            }else if(tbgc == "other"){
+                                                                var tagBackground = theme.tagBackground[tbgc];
+                                                                break;
+                                                            }
+                                                        }%>
+                                                        <div class="chip"><%= tag.name %></div>
+                                                    <% }) %>
+                                                <%}%>
+                                            </div>
+                                            </div>
+                                        </a>
+                                        </div>
+                                <% } }); } }); } %>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+            <div class="col s12 m10 l1"></div>
+        </div>
+    </div>
+</main>
+
+<script type="text/javascript" src="<%- theme.js.myIndex%>"></script>

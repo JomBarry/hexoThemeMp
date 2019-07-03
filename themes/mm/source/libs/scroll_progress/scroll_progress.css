@@ -1,0 +1,12 @@
+.bg-progress {
+    width: 100%;
+    position: fixed;
+    height: 5px;
+    bottom: 0;
+    z-index: 10000;
+}
+
+.progressBar {
+    width: 0;
+    height: 100%;
+}
