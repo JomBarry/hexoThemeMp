@@ -1,15 +1,17 @@
-## 设置String时尽量添加 " "  若不设值去掉 " " 
-
 ##---------------------------------------------------------------------------------------
 # 网站配置
 ##---------------------------------------------------------------------------------------
 site:
   icon: /medias/favicon.ico # 网站图标
 
+  
+##---------------------------------------------------------------------------------------
+# 手机适配配置
+##---------------------------------------------------------------------------------------
 
 user: 
   pic: /medias/user.jpg # 用户图标
-  name: "Barry" # default：username
+  description: 个人简介
   emil: "13396298960@163.com"
 
 phoneSlide:
@@ -20,17 +22,22 @@ phoneSlide:
   userBackground: /medias/userbackground.jpg
 
 
-
 ##---------------------------------------------------------------------------------------
 # header
 ##---------------------------------------------------------------------------------------
 # nav
 ## 支持rgba透明设置
 nav:
-  enable: false
-  color: "fff"
-  textColor: "000"
+  color: ""
 
+navLogo: # 支持文字和图片 同时存在显示图片
+  image:
+    enable: false
+    url: 
+  text:
+    enable: true
+    text: Barry
+  
 # menu
 ## icon 为 fontawesome框架
 ## 可以查找 http://fontawesome.dashgame.com/ 并设置 
@@ -41,8 +48,8 @@ menu:
   Archives:
     url: /categories/Android
     icon:
-  About:
-    url: /
+  About: 
+    url: /about
     icon:
   FriendLink: 
     url: /
@@ -54,43 +61,30 @@ menu:
 ## 可以查找 http://fontawesome.dashgame.com/ 并设置
 indexBanner:
   btn:
-    item1:
-      size: 2 #1-5
-      icon: "qq"
+    - icon: "qq"
       url: "https://github.com/JomBarry"
-    item2:
-      size: 2
-      icon: "git"
+    - icon: "git"
       url: "https://github.com/JomBarry"
   banner:
-    item1:
-      url: /
+    - url: /
       title: "BarryBlog"
       content: "wellcome !!!"
       image: "/medias/images/banner/background1.jpg"
-    item2:
-      url: /
+    - url: /
       title: "BarryBlog"
       content: "wellcome !!!"
       image: "/medias/images/banner/background2.jpg"
 
-##---------------------------------------------------------------------------------------
-# about
-##---------------------------------------------------------------------------------------
-about: 
-  background: 
-
 
 ##---------------------------------------------------------------------------------------
-# 标题（一）
+# 标题（一） showPostsTitle 值为空则不显示该栏目
 ##---------------------------------------------------------------------------------------
 indexTitle1:
   enable: true
-  icon: "thumbs-up"
+  icon: "font-awesome"
   text: "推荐文章"
   color: "000"
   lineColor: "fff"
-  fontWeight: false
   showPostsTitle: # 推荐文章时间 YYYY-MM-DD hh:mm:ss
     - "2019-07-01 18:55:11"
     - "2019-07-01 14:50:08"
@@ -109,13 +103,46 @@ indexTitle2:
     text: "Android"
     color: "000"
     lineColor: "fff"
-    fontWeight: false
   Java:
     icon: "cubes"
     text: ""
     color: "000"
     lineColor: "fff"
-    fontWeight: false
+
+##---------------------------------------------------------------------------------------
+# about
+##---------------------------------------------------------------------------------------
+about: 
+  background: 
+
+
+##---------------------------------------------------------------------------------------
+# floatingMenu 浮动菜单
+##---------------------------------------------------------------------------------------
+floatingMenu: 
+  enable: true
+  text: 分类
+  url: /categories
+  initFontColor: ""
+  hoverFontColor: ""
+  itemFontColor: ""
+  itemhoverFontColor: "#000"
+  itemHoverBackground: "green"
+  Colourful: # 配置单个选项
+    enable: true
+    item: # 最多9个
+      - icon: android
+        url: 
+        fontcolor: 
+        background: 
+        hoverFontColor: yellow
+        hoverBackground: 
+      - icon: 
+        url: 
+        fontcolor: 
+        hoverFontColor: 
+        hoverBackground:
+
 
 ##---------------------------------------------------------------------------------------
 # 标签云
@@ -127,6 +154,17 @@ tag_cloud:
     textHeight: 25
     outlineColor: '#E2E1D1'
     maxSpeed: 0.5
+
+##---------------------------------------------------------------------------------------
+# 分类页面设置 Categories
+##---------------------------------------------------------------------------------------
+categories:
+  banner:
+    - "/medias/images/postBanner/background1.jpg"
+    - "/medias/images/postBanner/background2.jpg"
+    - "/medias/images/postBanner/background3.jpg"
+    - "/medias/images/postBanner/background4.jpg"
+
 
 
 ##---------------------------------------------------------------------------------------
@@ -153,7 +191,8 @@ tocbot:
   headingsOffset: 45
   scrollSmoothOffset: -45
 
-categoriesColor: # 按分类给定颜色tag也会有同样的颜色(注意大小写)
+# 按分类给定class样式tag也会有同样的颜色(注意大小写)
+categoriesColor: 
   Android: grad_purple_red
   Java: grad_Cambridge_blue
   Hexo: grad_blue_darkBlue
@@ -171,14 +210,6 @@ FriendLink:
     搜狗: 
       url: www.sogou.com
       icon: 
-
-
-
-
-
-
-
-
 
 
 
@@ -203,11 +234,20 @@ libs:
       thumbnail: /libs/lightgallery/js/lg-thumbnail.min.js
       fullscreen: /libs/lightgallery/js/lg-fullscreen.min.js
     css: /libs/lightgallery/css/lightgallery.css
-  floatingMenu: 
-    css: 
-      bootstrap: /libs/floatingMenu/css/bootstrap.min.css
-      zzsc: /libs/floatingMenu/css/zzsc.css
-
+  echarts:
+    echarts: /libs/echarts/echarts.min.js
+    echartsGl: /libs/echarts/echarts-gl.min.js
+    ecStat: /libs/echarts/ecStat.min.js
+    dataTool: /libs/echarts/dataTool.min.js
+    china: /libs/echarts/china.js
+    world: /libs/echarts/world.js
+    api: /libs/echarts/api.js
+    bmap: /libs/echarts/bmap.min.js
+    simplex: /libs/echarts/simplex.js
+    theme: /libs/echarts/shine.js
+  aboutHistroy:
+    css: /libs/aboutHistroy/css/public.css
+    js: /libs/aboutHistroy/js/flexslider.js
 
 
 
@@ -219,6 +259,13 @@ commonPage:
   css: 
     browserScrollBar: /css/common/browserScrollBar.css
     gradientRamp: /css/common/gradientRamp.css
+partial:
+  css: 
+    index_banner: /css/partial/index_banner.css
+    index_header: /css/partial/index_header.css
+    categroies_banner_common: /css/partial/categroies_banner_common.css
+    post_banner_common: /css/partial/post_banner_common.css
+  js: 
 indexPage:
   js:
     header: /js/index/header.js
@@ -234,3 +281,21 @@ postPage:
   css:
     post: /css/post/post.css
     main: /css/post/main.css
+categoriesPage: 
+  js:
+    main: /js/categories/main.js
+  css:
+    button: /css/categories/button.css
+    main: /css/categories/main.css
+categoryPage:
+  js:
+  css:
+    main: /css/category/main.css
+tagPags:
+  css:
+    main: /css/tag/main.css
+  js:
+aboutPage:
+  js:
+    main: /js/about/main.js
+    aboutHistroy: /js/about/aboutHistroy.js

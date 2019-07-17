@@ -1,0 +1,34 @@
+
+<% 
+var categories = [],name='',value=0,categoriesLegend=[];
+if(site.categories && site.categories.length > 0){
+    site.categories.map(categoriesItem => {
+        categoriesLegend[categoriesLegend.length]=categoriesItem.name;
+        name=categoriesItem.name;
+        value=categoriesItem.length;
+        categories.push({name,value});
+    });
+}
+ %>
+<script type="text/javascript">
+
+    var myChart = echarts.init(document.getElementById('categoriesEcharts'), 'shine');
+    
+    var option = {
+        legend: {
+            padding: [
+                5,  // 上
+                10, // 右
+                10,  // 下
+                10, // 左
+            ],
+            data:JSON.parse('<%- JSON.stringify(categoriesLegend) %>')
+        },
+        series: [{
+            type: 'pie',
+            data: JSON.parse('<%- JSON.stringify(categories) %>')
+        }]
+    };
+
+    myChart.setOption(option);
+</script>

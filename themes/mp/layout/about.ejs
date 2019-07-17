@@ -1,0 +1,24 @@
+<main>
+    <header>
+        <%- partial('_partial/index_header') %>
+        <%- partial('_partial/about_banner') %>
+    </header>
+
+    <div class="row" style="background-color:#F1F0EE;">
+        <div class="col s0 m0 l1"></div>
+        <div class="col s12 m12 l10" style="padding-bottom:20px;">
+            <h3 class="center-align"><%= config.author %></h3>
+            <p style="text-indent: 30px;"><%= theme.user.description %></p>
+        </div>
+        <div class="col s0 m0 l1"></div>
+    </div>
+    <div class="row" style="margin-bottom:50px;padding-top:20px;">
+        <div class="col s0 m0 l1"></div>
+        <div class="col s12 m12 l10" style="padding-bottom:20px;">
+            <%- partial('_partial/aboutHistroy') %>            
+        </div>
+        <div class="col s0 m0 l1"></div>
+    </div>
+
+    <script type="text/javascript" src="<%= theme.aboutPage.js.main %>"></script>
+</main>

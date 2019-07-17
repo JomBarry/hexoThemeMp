@@ -1,33 +1,33 @@
-<link rel="stylesheet" href="<%= theme.categoriesPage.css.main %>">
 <link rel="stylesheet" type="text/css" href="<%= theme.categoriesPage.css.button %>">
+<link rel="stylesheet" type="text/css" href="<%= theme.categoriesPage.css.main %>">
 <main>
     <header>
         <%- partial('_partial/index_header') %>
         <%- partial('_partial/categories_banner_common') %>
     </header>
-
-    <div class="row categroiesBtn">
+    
+    <div class="row" style="padding:30px 0;background-color:#F1F0EE;">
         <div class="col s0 m0 l1"></div>
         <div class="col s12 m12 l10">
             <% var index = 1;
-            site.categories.map(categoriesItem => { %>
+            site.tags.map(tagsItem => { %>
                 <% if(index%3 == 1) { %>
-                    <a class="button red" href="/<%= categoriesItem.path %>"><%= categoriesItem.name %>&nbsp<%= categoriesItem.length %></a>
+                    <a class="button red" href="/<%= tagsItem.path %>"><%= tagsItem.name %>&nbsp<%= tagsItem.length %></a>
                 <% } else if(index%3 == 2){ %>
-                    <a class="button blue" href="/<%= categoriesItem.path %>"><%= categoriesItem.name %>&nbsp<%= categoriesItem.length %></a>
+                    <a class="button blue" href="/<%= tagsItem.path %>"><%= tagsItem.name %>&nbsp<%= tagsItem.length %></a>
                 <% } else if(index%3 == 0){%>
-                    <a class="button green" href="/<%= categoriesItem.path %>"><%= categoriesItem.name %>&nbsp<%= categoriesItem.length %></a>
+                    <a class="button green" href="/<%= tagsItem.path %>"><%= tagsItem.name %>&nbsp<%= tagsItem.length %></a>
                 <% } %>
             <% index ++ ; }); %>
         </div>
         <div class="col s0 m0 l1"></div>
     </div>
 
-    <div class="row categroiesStatistics">
+    <div class="row" style="background-color:#D8E1E0;">
         <div class="col s0 m0 l1"></div>
         <div class="col s12 m12 l10" style="padding-top:30px;">
-            <div id = "categoriesEcharts" class="center-align" style="height:28rem;"></div>
-            <%- partial('_widget/categorieseCharts') %>
+            <div id = "tagsEcharts" class="center-align" style="height:28rem;margin-bottom: 20px;"></div>
+            <%- partial('_widget/tagsCharts') %>
         </div>
         <div class="col s0 m0 l1"></div>
     </div>

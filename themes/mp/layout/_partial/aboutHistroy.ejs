@@ -1,0 +1,104 @@
+<link rel="stylesheet" type="text/css" href="<%= theme.libs.aboutHistroy.css %>">
+<script type="text/javascript" src="<%= theme.libs.aboutHistroy.js %>"></script>
+
+
+<div class="about-history" id="fzlc">
+    <header class="about-title title-white">
+        <h3 class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">成长记录</h3>
+        <p class="wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">GROWUP</p>
+    </header>
+    <div class="about-history-list wow zoomIn" data-wow-delay=".4s" style="visibility: visible; animation-delay: 0.4s; animation-name: zoomIn;">		
+        <div class="flex-viewport" style="overflow: hidden; position: relative;">
+            <ul class="slides clearfix list" style="width: 2600%; transition-duration: 0s; transform: translate3d(0px, 0px, 0px);">
+            <%  
+                if(site.categories&&site.categories.length>0){
+                    site.categories.map(item => {
+                        if(item.name == 'myself'){
+                            item.posts.sort('date').reverse().map(postsItem => { %>
+                <li class="index1" style="width: 253px; float: left; display: block;">
+                    <div class="item">
+                    <a href="<%= url_for(postsItem.canonical_path) %>">
+                        <h3><%= date(postsItem.date,theme.posts.dateFormat) %></h3>
+                        <div class="desc">
+                            <img src="<%= url_for(postsItem.thumbnail) %>" alt="">
+                            <p style="display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;word-wrap:break-word;word-break:break-all;overflow: hidden;">
+                            <%- strip_html(postsItem.content).substring(0, 120) %>
+                            </p>
+                        </div>
+                        </a>
+                    </div>
+                </li>
+            <% }); } }); }%>
+                <li class="index2" style="width: 253px; float: left; display: block;">
+                    <div class="item">
+                        <h3>2017</h3>
+                        <div class="desc">
+                            <img src="http://pic23.nipic.com/20120810/5736735_162511503170_2.jpg" alt="">
+                            <p>
+                            1公司进行大项目组改制，深化管理层次，确定项目组责任制与分红制，集团凝聚力更上新的台阶。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="index3" style="width: 253px; float: left; display: block;">
+                    <div class="item">
+                        <h3>2017</h3>
+                        <div class="desc">
+                            <p>
+                            1公司进行大项目组改制，深化管理层次，确定项目组责任制与分红制，集团凝聚力更上新的台阶。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="index4" style="width: 253px; float: left; display: block;">
+                    <div class="item">
+                        <h3>2017</h3>
+                        <div class="desc">
+                            <p>
+                            1公司进行大项目组改制，深化管理层次，确定项目组责任制与分红制，集团凝聚力更上新的台阶。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="index5" style="width: 253px; float: left; display: block;">
+                    <div class="item">
+                        <h3>2017</h3>
+                        <div class="desc">
+                            <p>
+                            1公司进行大项目组改制，深化管理层次，确定项目组责任制与分红制，集团凝聚力更上新的台阶。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li class="index6" style="width: 253px; float: left; display: block;">
+                    <div class="item">
+                        <h3>2017</h3>
+                        <div class="desc">
+                            <p>
+                            1公司进行大项目组改制，深化管理层次，确定项目组责任制与分红制，集团凝聚力更上新的台阶。
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li style="width: 253px; float: left; display: block;"></li>
+            </ul>
+        </div>
+        <ul class="flex-direction-nav">
+            <li class="flex-nav-prev"><a class="flex-prev" href="#">&lt;</a></li>
+            <li class="flex-nav-next"><a class="flex-next" href="#">&gt;</a></li>
+         </ul>
+    </div>
+    
+</div>
+
+<script>
+	$(function(){
+		if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))){
+			//phone
+		}else{
+			//PC
+			$(".about-history-list").flexslider({animation:"slide",slideshow:false,controlNav:false,itemWidth:253,itemMargin:31,prevText:"<",nextText:">",move:1});
+		}
+	});
+</script>
+<script type="text/javascript" src="<%= theme.aboutPage.js.aboutHistroy %>"></script>

@@ -1,7 +1,8 @@
 <ul id="slide-out" class="side-nav">
-    <li><div class="userView">
-        <div class="background">
-        <img src="<%= theme.phoneSlide.userBackground %>">
+    <li>
+        <div class="userView">
+            <div class="background">
+            <img src="<%= theme.phoneSlide.userBackground %>">
         </div>
         <% 
         var aboutUrl = "#!about";
@@ -10,33 +11,35 @@
                 aboutUrl = theme.menu[menuItem].url;
             }
         }); %>
-        <a href="<%= aboutUrl %>"><img class="circle" src="<%= theme.user.pic %>"></a>
+        <a href="<%= url_for(aboutUrl) %>"><img class="circle" src="<%= theme.user.pic %>"></a>
         <% 
-        var userName = "username",emil = "xxxxxxxxxxx@xxx.com";
-        if(theme.user.name){
-            userName = theme.user.name
+        var userName = "author",emil = "xxxxxxxxxxx@xxx.com";
+        if(config.author){
+            userName = config.author
         }
         if(theme.user.emil){
             emil = theme.user.emil
         } %>
         <a href="#!name"><span class="white-text name"><%= userName %></span></a>
         <a href="#!email"><span class="white-text email"><%= emil %></span></a>
-    </div></li>
+    </li>
     <% Object.keys(theme.menu).forEach(menuItem => { %>
-        <li><a href="<%= theme.menu[menuItem].url %>">
-        <% if(theme.menu[menuItem].icon) { %>
-            <i class="fa fa-<%= theme.menu[menuItem].icon %>"></i>
-        <% } %>
-        <%= menuItem %></a></li>
+        <li>
+            <a href="<%= url_for(theme.menu[menuItem].url) %>">
+            <% if(theme.menu[menuItem].icon) { %>
+                <i class="fa fa-<%= theme.menu[menuItem].icon %>"></i>
+            <% } %>
+            <%= __(menuItem) %></a>
+        </li>
     <% }); %>
     <li><div class="divider"></div></li>
     <% 
-    var siteDescription = "网站描述";
-    if(config.description){
-        siteDescription = config.description;
+    var userDescription = "个人简介";
+    if(theme.user.description){
+        userDescription = theme.user.description;
     }
      %>
-    <li><a class="subheader"><%= siteDescription %></a></li>
+    <li><a class="subheader"><%= userDescription %></a></li>
 </ul>
 
 <script>
@@ -57,9 +60,9 @@
     }
 %>
 $('.button-collapse').sideNav({
-    menuWidth: <%= menuWidth %>, // Default is 240
-    edge: '<%= phoneSlidePosition %>', // Choose the horizontal origin
-    closeOnClick: <%= closeOnClick %>, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-    draggable: <%= draggable %> // Choose whether you can drag to open on touch screens
+    menuWidth: <%= menuWidth %>, 
+    edge: '<%= phoneSlidePosition %>',
+    closeOnClick: <%= closeOnClick %>,
+    draggable: <%= draggable %>
 });
 </script>

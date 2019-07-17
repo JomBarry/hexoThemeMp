@@ -1,0 +1,12 @@
+<link rel="stylesheet" href="<%= theme.partial.css.categroies_banner_common %>">
+
+<div class="slider">
+    <ul class="slides">
+    <% if(theme.categories.banner && theme.categories.banner.length){
+        theme.categories.banner.map(categoriesBannerItem => { %>
+        <li class="categroiesBannerCommonLi" style="background-image:url(<%= categoriesBannerItem %>);"></li>
+        <% }); %>
+    <% } %>
+    </ul>
+    <h2 id="postTitle" class="center-align"><%= __(page.title) %></h2>
+</div>

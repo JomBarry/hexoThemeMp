@@ -1,0 +1,25 @@
+<div class="slider">
+    <ul class="slides">
+    <% if(page.banner && page.banner.length){
+        page.banner.map(pageBannerItem => { %>
+        <li style="background-image:url(<%= pageBannerItem %>);background-repeat:no-repeat; background-attachment: fixed;background-size: cover;background-position: center;"></li>
+        <% }); %>
+    <% }else{ 
+        theme.posts.defaultBanner.map(postsDefaultBanner => { %>
+        <li style="background-image:url(<%= postsDefaultBanner %>);background-repeat:no-repeat; background-attachment: fixed;background-size: cover;background-position: center;"></li>
+    <% }); } %>
+    </ul>
+    <div class="valign-wrapper" style="position: absolute;top: 0;left: 0;width:100%;height:100%;z-index:2;" >
+        <img class="circle valign" src="<%= theme.user.pic %>" style="width:140px;height:100%;margin:0 auto;padding:55px 0;">
+    </div>
+    <div style="position: absolute;bottom:0;z-index:2;width:100%;">
+        <h5 class="center-align" style="font-size:1.5rem;">
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3327335699&site=qq&menu=yes"><i class="fa fa-qq"></i></a>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3327335699&site=qq&menu=yes"><i class="fa fa-wechat"></i></a>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3327335699&site=qq&menu=yes"><i class="fa fa-github-square"></i></a>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3327335699&site=qq&menu=yes"><i class="fa fa-weibo"></i></a>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3327335699&site=qq&menu=yes"><i class="fa fa-google"></i></a>
+            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=3327335699&site=qq&menu=yes"><i class="fa fa-facebook-official"></i></a>
+        </h5>
+    </div>
+</div>

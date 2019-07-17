@@ -1,0 +1,11 @@
+.index_banner>div>a {
+    color: #000;
+    margin: 0 10px;
+}
+
+.index_banner>a>div {
+    padding-top: 64px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

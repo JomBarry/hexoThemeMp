@@ -1,16 +1,22 @@
 <%# banner %>
-<div class="carousel carousel-slider center" data-indicators="true">
+<link rel="stylesheet" type="text/css" href="<%= theme.partial.css.index_banner %>">
+
+<div class="index_banner carousel carousel-slider center" data-indicators="true">
     <div class="carousel-fixed-item center">
-        <% Object.keys(theme.indexBanner.btn).forEach(item => { %>
-        <a href="<%= theme.indexBanner.btn[item].url %>" class="hoverable transparent" style="color:#000;margin:0 10px;"><i class="fa fa-<%= theme.indexBanner.btn[item].icon %> fa-<%= theme.indexBanner.btn[item].size %>x"></i></a>
-        <% }); %>
+        <%         
+        if (theme.indexBanner.btn && theme.indexBanner.btn.length>0) {
+            theme.indexBanner.btn.map(item => { %>
+            <a href="<%= item.url %>" class="hoverable transparent"><i class="fa fa-<%= item.icon %>"></i></a>
+        <% }); } %>
     </div>
-    <% Object.keys(theme.indexBanner.banner).forEach(item => { %>
-    <a href="<%= theme.indexBanner.banner[item].url %>">
-        <div class="carousel-item white-text" href="#one!" style="padding-top:64px;background-image:url(<%= theme.indexBanner.banner[item].image %>);background-repeat:no-repeat;background-size: cover;background-position: center;">
-            <h2><%= theme.indexBanner.banner[item].title %></h2>
-            <p class="white-text"><%= theme.indexBanner.banner[item].content %></p>
+    <% 
+    if(theme.indexBanner.banner && theme.indexBanner.banner.length>0 ) { 
+        theme.indexBanner.banner.map(item => { %>
+    <a href="<%= item.url %>">
+        <div class="carousel-item white-text" href="#one!" style="background-image: url(<%= item.image %>);">
+            <h2><%= item.title %></h2>
+            <p class="white-text"><%= item.content %></p>
         </div>
     </a>
-    <% }); %>
+    <% }); } %>
 </div>

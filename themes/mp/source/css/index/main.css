@@ -1,0 +1,232 @@
+.title1 {
+    background-color: #F1F0EE;
+    padding-top: 20px;
+}
+
+.index>.title1>div>h5 {
+    padding: 0 0 5px 10px;
+}
+
+.index>.title1>div>div {
+    margin: 0;
+}
+
+.title1Post {
+    padding: 0px 10px;
+}
+
+.title1Post>div {
+    height: 240px !important;
+}
+
+.title1postData {
+    border-bottom-left-radius: 5px;
+    position: absolute;
+    left: 0;
+    padding: 5px 10px 3px 5px;
+    font-size: 0.1em;
+    color: #f5f5f5;
+    z-index: 2;
+}
+
+.title1PostCategory {
+    border-bottom-left-radius: 5px;
+    position: absolute;
+    right: 0;
+    padding: 5px 10px 3px 5px;
+    font-size: 0.1em;
+    z-index: 2;
+}
+
+.title1PostTitle {
+    box-shadow: inset 0 0 1000px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0 10px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+}
+
+.title1PostStatistics {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 5px 10px;
+    background-color: rgba(158, 158, 158, 0.5);
+    font-size: 0.1em;
+}
+
+.title1PostStatistics1,
+.title1PostStatistics0 {
+    display: inline-block;
+    font-weight: bold;
+    float: right;
+    color: #e0e0e0;
+}
+
+.title1PostStatistics0 {
+    margin: 0 2px;
+}
+
+.title1PostContent {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    color: #757575;
+}
+
+.title1PostTag,
+.title2PostTag {
+    position: absolute;
+    bottom: 0;
+}
+
+.title1PostTag {
+    padding: 0 10px 10px 10px;
+}
+
+.title2PostTag {
+    padding: 0 10px 5px 10px;
+}
+
+.title1PostTag>a>div,
+.title1PostTag>div,
+.title2PostTag>a>div,
+.title2PostTag>div {
+    font-size: 1px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.title2PostTag>a>div,
+.title2PostTag>div {
+    margin-right: 2px;
+}
+
+.title1PostTag>div,
+.title2PostTag>div {
+    display: none;
+}
+
+.title2 {
+    margin-top: 30px;
+}
+
+.title2Name {
+    padding: 0 10px 5px 10px;
+}
+
+.title2NameNo,
+.tagsTitle,
+.growUpTitle {
+    padding: 0 10px 5px 10px;
+    border-bottom: 1px solid #fff;
+}
+
+.title2More,
+.tagsMore {
+    float: right;
+    font-size: 1.2rem;
+}
+
+.title2Post {
+    padding: 0px 10px;
+}
+
+.indexCard02 {
+    height: 220px !important;
+}
+
+.title2PostTime {
+    border-bottom-left-radius: 5px;
+    position: absolute;
+    left: 0;
+    padding: 5px 10px 3px 5px;
+    font-size: 0.1em;
+    color: #f5f5f5;
+    z-index: 2;
+}
+
+.title2PostCategroy {
+    border-bottom-left-radius: 5px;
+    position: absolute;
+    right: 0;
+    padding: 5px 10px 3px 10px;
+    font-size: 0.1em;
+    z-index: 2;
+    color: #fff;
+}
+
+.indexPostTitle02 {
+    box-shadow: inset 0 0 1000px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.title2Content {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    color: #757575 !important;
+    font-size: 0.5rem;
+}
+
+.tagCloud {
+    padding: 50px 2px 50px 2px;
+}
+
+.growUpTitlePost {
+    padding: 0 !important;
+    margin: 0 0 10px 0;
+}
+
+.growUpTitlePost>a>div {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+.growUpPost {
+    margin: 0;
+    border-bottom: 0;
+    box-shadow: none;
+}
+
+.growUpContent {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    color: #757575 !important;
+}
+
+.growUpPostData {
+    padding: 5px;
+    background-color: #fff;
+}
+
+.growUpPostData>p {
+    margin: 0;
+    font-size: 0.1em;
+    text-align: center;
+}

@@ -56,9 +56,10 @@
     <table>
         <tr>
             <th><i class="fa fa-linode"></i>分类：</th>
-            <% page.categories.map(pageCategorieItem => { %>
+            <% if(page.categories && page.categories > 0){
+                page.categories.map(pageCategorieItem => { %>
                 <th><%= pageCategorieItem.name %>|</th>
-            <% }); %>
+            <% }); } %>
         </tr>
     </table>
     <table>
@@ -68,9 +69,10 @@
     </table>
     <div>
         <i class="fa fa-tags"></i>标签：
-        <% page.tags.map(pageTagsItem => { %>
+        <% if ( page.tags &&  page.tags > 0) {
+            page.tags.map(pageTagsItem => { %>
             |<%= pageTagsItem.name %>|
-        <% }); %>
+        <% }); } %>
     </div>
 </div>
 

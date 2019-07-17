@@ -1,26 +1,28 @@
 <%# nav%>
-<div class="navbar-fixed">
-    <% var navColor = "#7b1fa2",navTextColor = "#fff";
-    if(theme.nav.enable){
-        if(theme.nav.color != null){
-            navColor = "#" + theme.nav.color;
-        }
-        if(theme.nav.textColor != null){
-            navTextColor = "#" + theme.nav.textColor;
-        }
+<link rel="stylesheet" type="text/css" href="<%= theme.partial.css.index_header %>">
+
+<div class="navbar-fixed index_header">
+    <% var navColor = "linear-gradient(45deg, #51636d, #441034)";
+    if(theme.nav.color){
+        navColor = theme.nav.color;
     } %>
-    <nav style="background-color:<%= navColor %>;">
+    <nav style="background:<%= navColor %>;">
         <div class="row">
             <div class="col s1 m1 l1"></div>
             <div class="col s10 m10 l10">
                 <div class="nav-wrapper">
-                    <a href="<%= config.url %>" class="brand-logo">Logo</a>
+                    <a href="<%= url_for(config.url) %>" class="brand-logo">
+                    <% if(theme.navLogo.image.enable){ %>
+                        <img src="<%= theme.navLogo.image.url %>" alt="Logo">
+                    <% }else if(theme.navLogo.text.enable) { %>
+                        <%= theme.navLogo.text.text %>
+                    <% } %> </a>
                     <ul class="right hide-on-med-and-down">
                         <% Object.keys(theme.menu).forEach( item =>{ %>
                         <li>
-                            <a href="<%= theme.menu[item].url %>" style="color:<%= navTextColor %>;">
+                            <a href="<%= url_for(theme.menu[item].url) %>" style="color:#fff;">
                                 <% if(theme.menu[item].icon != null){ %>
-                                <i class="fa fa-<%= theme.menu[item].icon%>"></i> 
+                                <i class="fa fa-<%= theme.menu[item].icon %>"></i> 
                                 <% } %>
                                 <%= __(item) %>
                             </a>
@@ -32,7 +34,6 @@
             </div>
             <div class="col s1 m1 l1"></div>
         </div>
-        
     </nav>
 </div>
 <%- partial('_partial/index_header_phone') %>

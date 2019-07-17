@@ -7,6 +7,8 @@
     <body style="background-color:#D8E1E0">
         <%- body %>
         <%- partial('_common/footer') %>
-        <%- partial('_widget/floatingMenu') %>
+        <% if(theme.floatingMenu.enable) { %>
+            <%- partial('_widget/floatingMenu') %>
+        <% } %>
     </body>
 </html>

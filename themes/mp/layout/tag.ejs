@@ -1,6 +1,7 @@
 
 <link rel="stylesheet" type="text/css" href="<%= theme.categoriesPage.css.button %>">
-<link rel="stylesheet" type="text/css" href="<%= theme.categoryPage.css.main %>">
+<link rel="stylesheet" type="text/css" href="<%= theme.categoriesPage.css.main %>">
+<link rel="stylesheet" type="text/css" href="<%= theme.tagPags.css.main %>">
 <% 
 // 设置随机值
 // 默认图片处使用
@@ -14,50 +15,50 @@ function randomPic(postName){
 <main>
     <header>
         <%- partial('_partial/index_header') %>
-        <%- partial('_partial/category_banner_common') %>
+        <%- partial('_partial/tag_banner_common') %>
     </header>
-
-    <div class="row categoryBtn">
+    
+    <div class="row tagBtn">
         <div class="col s0 m0 l1"></div>
         <div class="col s12 m12 l10">
-            <% var index = 1;var pageCategory = page.category;
-            site.categories.map(categoriesItem => { %>
+            <% var index = 1;var pageTags = page.tag;
+            site.tags.map(tagsItem => { %>
                 <% if(index%3 == 1) { %>
-                    <a class="button red" href="/<%= categoriesItem.path %>">
-                    <% if(pageCategory == categoriesItem.name) { %>
-                        <i class="fa fa-caret-right categoryChoose"></i>&nbsp
+                    <a class="button red" href="/<%= tagsItem.path %>">
+                    <% if(pageTags == tagsItem.name) { %>
+                        <i class="fa fa-caret-right tagChoose"></i>&nbsp
                     <% } %>
-                    <%= categoriesItem.name %>&nbsp<%= categoriesItem.length %></a>
+                    <%= tagsItem.name %>&nbsp<%= tagsItem.length %></a>
                 <% } else if(index%3 == 2){ %>
-                    <a class="button blue" href="/<%= categoriesItem.path %>">
-                    <% if(pageCategory == categoriesItem.name) { %>
-                        <i class="fa fa-caret-right categoryChoose"></i>&nbsp
+                    <a class="button blue" href="/<%= tagsItem.path %>">
+                    <% if(pageTags == tagsItem.name) { %>
+                        <i class="fa fa-caret-right tagChoose"></i>&nbsp
                     <% } %>
-                    <%= categoriesItem.name %>&nbsp<%= categoriesItem.length %></a>
+                    <%= tagsItem.name %>&nbsp<%= tagsItem.length %></a>
                 <% } else if(index%3 == 0){%>
-                    <a class="button green" href="/<%= categoriesItem.path %>">
-                    <% if(pageCategory == categoriesItem.name) { %>
-                        <i class="fa fa-caret-right categoryChoose"></i>&nbsp
+                    <a class="button green" href="/<%= tagsItem.path %>">
+                    <% if(pageTags == tagsItem.name) { %>
+                        <i class="fa fa-caret-right tagChoose"></i>&nbsp
                     <% } %>
-                    <%= categoriesItem.name %>&nbsp<%= categoriesItem.length %></a>
+                    <%= tagsItem.name %>&nbsp<%= tagsItem.length %></a>
                 <% } %>
             <% index ++ ; }); %>
         </div>
         <div class="col s0 m0 l1"></div>
     </div>
 
-    <div class="row categoryPosition">
+    <div class="row tagPost">
         <div class="col s0 m0 l1"></div>
-        <div class="col s12 m12 l10">
-            <div class="row" style="margin:0;">
+        <div class="col s12 m12 l10 tagPostPosition">
+            <div class="row">
                 <% 
                 var postTagsI = 0;
                 page.posts.sort('date').reverse().map(postsItem => { %>
-                <div class="col s12 m4 l3 categoryPost">
+                <div class="col s12 m4 l3 tagPosts">
                     <div class="card small hoverable indexCard01">
                         <a href="<%= url_for(postsItem.canonical_path) %>">
                         <div class="card-image waves-effect waves-block waves-light">
-                            <div class="categoryPostData"><%= date(postsItem.date,theme.posts.dateFormat) %></div>
+                            <div class="tagPostData"><%= date(postsItem.date,theme.posts.dateFormat) %></div>
                             <% 
                             postsItem.categories.map(postsItemCategoriesItem => { 
                                 var categoriesColor = "";
@@ -69,27 +70,27 @@ function randomPic(postName){
                                     });
                                 }
                             %>
-                            <div class="<%= categoriesColor %> accent-3 categoryPostcategory"><%= postsItemCategoriesItem.name %></div>
+                            <div class="<%= categoriesColor %> accent-3 tagPostCategroy"><%= postsItemCategoriesItem.name %></div>
                             <% }); %>
-                            <h5 class="indexPostTitle truncate categoryPostTitle"><%= postsItem.title %></h5>
+                            <h5 class="indexPostTitle truncate tagPostTitle"><%= postsItem.title %></h5>
                             <% if(postsItem.thumbnail != null) { %>
                             <img class="activator" src="<%= postsItem.thumbnail %>">
                             <% } else { %>
                             <img class="activator" src="<%= theme.posts.defaultThumbnail[randomPic(postsItem.title)] %>">
                             <% } %>
-                            <div class="categoryPostStatistics">
-                                <div  class="categoryPostStatistics1"><i class="fa fa-commenting-o"></i> 阅读量:99+</div>
-                                <div  class="categoryPostStatistics0">|</div>
-                                <div  class="categoryPostStatistics1"><i class="fa fa-commenting-o"></i> 评论数:99+</div>
+                            <div class="tagPostStatistics">
+                                <div class="tagPostStatistics1"><i class="fa fa-commenting-o"></i> 阅读量:99+</div>
+                                <div class="tagPostStatistics0">|</div>
+                                <div class="tagPostStatistics1"><i class="fa fa-commenting-o"></i> 评论数:99+</div>
                             </div>
                         </div>
                         </a>
                         <div class="card-content" style="padding:10px;">
                         <a href="<%= url_for(postsItem.canonical_path) %>">
-                            <p class="categoryPostContent"><%- strip_html(postsItem.content).substring(0, 120) %></p>
+                            <p class="tagPostContent"><%- strip_html(postsItem.content).substring(0, 120) %></p>
                         </a>
                         </div>
-                        <div class="categoryPostTags">
+                        <div class="tagTagsPosition">
                             <% var TagsI = 0;
                             postsItem.tags.map(postsItemTagsItem => { 
                                 var tagsColor = "";
@@ -111,7 +112,7 @@ function randomPic(postName){
                                 }
                             %>
                             <a href="<%= url_for(postsItemTagsItem.path) %>">
-                                <div class="<%= tagsColor %> hoverable chip indexPostChip <%= 'indexPostTags01'+postTagsI+ TagsI %> categoryPostTag">
+                                <div class="<%= tagsColor %> hoverable chip indexPostChip <%= 'indexPostTags01'+postTagsI+ TagsI %> tagTagsName">
                                     <%= postsItemTagsItem.name %>
                                 </div>
                             </a>
@@ -125,7 +126,5 @@ function randomPic(postName){
         </div>
         <div class="col s0 m0 l1"></div>
     </div>
-
-
+    <script type="text/javascript" src="<%= theme.categoriesPage.js.main %>"></script>
 </main>
-<script type="text/javascript" src="<%= theme.categoriesPage.js.main %>"></script>

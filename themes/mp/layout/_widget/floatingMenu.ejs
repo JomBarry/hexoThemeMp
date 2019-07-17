@@ -1,32 +1,58 @@
+<% 
+	var initFontColor = "#99b977",hoverFontColor = "#6ea931f2",
+		itemFontColor = "#99b977",itemhoverFontColor = "#6ea931f2",itemHoverBackground = "yellow";
+	
+	if(theme.floatingMenu.initFontColor){
+		initFontColor = theme.floatingMenu.initFontColor;
+	} 
+	if(theme.floatingMenu.hoverFontColor){
+		hoverFontColor = theme.floatingMenu.hoverFontColor;
+	} 
+	if(theme.floatingMenu.itemFontColor){
+		itemFontColor = theme.floatingMenu.itemFontColor;
+	} 
+	if(theme.floatingMenu.itemhoverFontColor){
+		itemhoverFontColor = theme.floatingMenu.itemhoverFontColor;
+	} 
+	if(theme.floatingMenu.itemHoverBackground){
+		itemHoverBackground = theme.floatingMenu.itemHoverBackground;
+	} 
+ %>
 
-<link rel="stylesheet" type="text/css" href="<%= theme.libs.floatingMenu.css.zzsc %>">
 <style type="text/css">
+	.floatingMenu{
+		position: fixed;
+		bottom: 0;
+		right: 80px;
+	}
 	.floatingMenu>.navbar{
-		width: 150px;
-		height: 150px;
-		line-height: 150px;
+		width: 100px;
+		height: 100px;
+		line-height: 100px;
 		border-radius: 50%;
-		background: #fff;
+		background: rgba(206, 210, 234,0.2);
 		margin: 70px auto;
 		position: relative;
 		cursor: pointer;
 		text-align: center;
-		font-size: 1.75em;
+		font-size: 1.5em;
 		font-weight: bold;
-		color: #99b977;
+		color: <%= initFontColor %>;
 		transition: 0.24s 0.2s;
+		box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
 	}
 	.floatingMenu>.navbar:hover{
 		background: rgba(255, 255, 255, 0.75);
+		color: <%= hoverFontColor %>;
 	}
 	.floatingMenu>.navbar .menu{
 		list-style: none;
 		padding: 0;
 		margin: 0;
 		position: absolute;
-		top: -75px;
-		left: -75px;
-		border: 150px solid transparent;
+		top: -50px;
+		left: -50px;
+		border: 100px solid transparent;
 		cursor: default;
 		border-radius: 50%;
 		transform: scale(0);
@@ -40,9 +66,9 @@
 	}
 	.floatingMenu>.navbar .menu li{
 		position: absolute;
-		top: -100px;
-		left: -100px;
-		transform-origin: 100px 100px;
+		top: -85px;
+		left: -85px;
+		transform-origin: 85px 85px;
 		transition: all 0.5s 0.1s;
 	}
 	.floatingMenu>.navbar:hover .menu li{
@@ -56,9 +82,10 @@
 		background: #fff;
 		position: absolute;
 		font-size: 60%;
-		color: #99b977;
+		color: <%= itemFontColor %>;
 		transition: 0.6s;
 	}
+	
 	.floatingMenu>.navbar:hover .menu li:nth-child(1){
 		transition-delay: 0.02s;
 		transform: rotate(85deg);
@@ -131,19 +158,41 @@
 		transition-delay: 0.36s;
 		transform: rotate(315deg);
 	}
+	.menu>li a:hover{
+		color:<%= itemhoverFontColor %> !important;
+		background:<%= itemHoverBackground %>!important;
+	}
+	<% 
+	if(theme.floatingMenu.Colourful.enable){
+		var index = 0;
+		theme.floatingMenu.Colourful.item.map(item => { %>
+			.menu>li:nth-child(<%= index+1 %>) a{
+				color:<%= item.fontcolor %> !important;
+				background:<%= item.background %>!important;
+			}
+			.menu>li:nth-child(<%= index+1 %>) a:hover{
+				color:<%= item.hoverFontColor %> !important;
+				background:<%= item.HoverBackground %>!important;
+			}
+	<%	index++;
+		});
+	}
+	%>
+
 </style>
-<div class="floatingMenu hide-on-med-and-down">
-    <div class="navbar">主菜单
+<div class="floatingMenu hide-on-med-and-down" style="z-index:999;">
+    <div class="navbar">
+	<a href="<%= theme.floatingMenu.url %>" style="z-index:999;color:<%= initFontColor %>;">
+		<%= theme.floatingMenu.text %>
+	</a>
         <ul class="menu">
-            <li><a href="#" class="fa fa-facebook"></a></li>
-            <li><a href="#" class="fa fa-google-plus"></a></li>
-            <li><a href="#" class="fa fa-twitter"></a></li>
-            <li><a href="#" class="fa fa-linkedin"></a></li>
-            <li><a href="#" class="fa fa-pinterest"></a></li>
-            <li><a href="#" class="fa fa-rss"></a></li>
-            <li><a href="#" class="fa fa-instagram"></a></li>
-            <li><a href="#" class="fa fa-skype"></a></li>
-            <li><a href="#" class="fa fa-github"></a></li>
+		<% 
+		if(theme.floatingMenu.Colourful.enable){
+			theme.floatingMenu.Colourful.item.map(item => { %>
+				<li><a href="<%= item.url %>" class="fa fa-<%= item.icon %>"></a></li>
+		<%	});
+		}
+		%>
         </ul>
     </div>
 </div>

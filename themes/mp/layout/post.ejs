@@ -1,28 +1,27 @@
-<main style="background-color:#c5cae9;">
 
-    <link rel="stylesheet" href="<%= theme.postPage.css.post %>">
-    <link rel="stylesheet" href="<%= theme.postPage.css.main %>">
-    
+<link rel="stylesheet" href="<%= theme.postPage.css.post %>">
+<link rel="stylesheet" href="<%= theme.postPage.css.main %>">
+<main style="background-color:#c5cae9;">
     <header>
         <%- partial('_partial/index_header') %>
         <%- partial('_partial/post_banner_common') %>
     </header>
 
-    <div class="row" style="margin-top:30px;">
-        <div class="col s1 m1 l1"></div>
-        <div class="col s10 m10 l10" style="padding:0;">
+    <div class="row postContent">
+        <div class="col s0 m0 l1"></div>
+        <div class="col s12 m12 l10" style="padding:0;">
             <div class="row">
-                <div id="tocbot-content" class="col s12 m12 l9 card" style="padding:10px 20px;background-color:rgba(241, 240, 238,0.2);">
+                <div id="tocbot-content" class="col s12 m12 l9 card">
                     <%- page.content %>
                 </div>
                 <div class="col s0 m0 l3 rightSideBar">
-                    <div class="toc-fex card hide-on-med-and-down" style="background:#CED2EA;">
+                    <div class="toc-fex card hide-on-med-and-down tocbot">
                         <%- partial('_widget/tocbot') %>                    
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col s1 m1 l1"></div>
+        <div class="col s0 m0 l1"></div>
     </div>
 
     <script type="text/javascript" src="<%= theme.postPage.js.commonBanner %>"></script>
