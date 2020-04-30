@@ -18,7 +18,7 @@
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-server": "^0.3.3",
     "hexo-tag-cloud": "2.1.*",
-    "jquery": "^3.4.1"
+    "jquery": "^3.5.0"
   },
   "scripts": {
     "deploy": "hexo clean && hexo g -d",
